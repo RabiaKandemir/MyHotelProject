@@ -8,6 +8,9 @@ using HotelProject.EntityLayer.Concrete;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<Context>();
+builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+builder.Services.AddScoped<IAboutService, AboutManager>();
+
 builder.Services.AddScoped<IStaffDal, EfStaffDal>();
 builder.Services.AddScoped<IStaffService, StaffManager>();
 
