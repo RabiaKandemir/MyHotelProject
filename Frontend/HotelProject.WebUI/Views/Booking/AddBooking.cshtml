@@ -98,15 +98,11 @@
     </div>
 </div>
 <script>
-
-    $('#date3').datetimepicker({
-        format: 'DD.MM.YYYY HH:mm',
-        locale: 'tr',
-        timeZone: 'Europe/Istanbul'
-    });
-    $('#date4').datetimepicker({
-        format: 'DD.MM.YYYY HH:mm',
-        locale: 'tr',
-        timeZone: 'Europe/Istanbul'
+    $(function () {
+        $('#date3, #date4').datetimepicker({
+            format: 'DD-MM-YYYY',
+            minDate: new Date(),
+            timeZone: 'Europe/Istanbul'
+        });
     });
 </script>
