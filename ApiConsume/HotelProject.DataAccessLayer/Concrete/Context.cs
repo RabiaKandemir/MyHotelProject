@@ -9,8 +9,25 @@ using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.Concrete
 {
-    public class Context:IdentityDbContext<AppUser,AppRole,int>
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Room>(entry =>
+            {
+                entry.ToTable("Rooms", tb => tb.HasTrigger("Roomincrease"));
+            });
+            builder.Entity<Guest>(entry =>
+            {
+                entry.ToTable("Guests", tb => tb.HasTrigger("Guestincrease"));
+            });
+            builder.Entity<Staff>(entry =>
+            {
+                entry.ToTable("Staffs", tb => tb.HasTrigger("Staffincrease"));
+            });
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=localhost;initial catalog=ApiDb;integrated security=true;trustservercertificate=true");
