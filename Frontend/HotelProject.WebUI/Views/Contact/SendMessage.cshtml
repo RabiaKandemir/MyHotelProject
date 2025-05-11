@@ -44,20 +44,26 @@
                                     <label for="email">Mail Adresiniz</label>
                                 </div>
                             </div>
-
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Konu Başlığı" name="Subject">
-                                <label for="subject">Konu Başlığını Yazınız</label>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    @Html.DropDownListFor(x => x.MessageCategoryId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                                    <label for="subject">Konuyu Seçiniz</label>
+                                </div>
+                                <br />
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" placeholder="Kou Başlığı" name="Subject">
+                                    <label for="subject">Konu Başlığını Yazınız</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Mesajnızı Buraya Yazabilirsiniz" name="Message" id="message" style="height: 150px"></textarea>
-                                <label for="message">Mesajınız</label>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Mesajnızı Buraya Yazabilirsiniz" name="Message" id="message" style="height: 150px"></textarea>
+                                    <label for="message">Mesajınız</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Mesajı Gönder</button>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Mesajı Gönder</button>
+                            </div>
                         </div>
                     </form>
                 </div>
