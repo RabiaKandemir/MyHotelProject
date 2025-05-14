@@ -1,11 +1,10 @@
-﻿using HotelProject.EntityLayer.Concrete;
+﻿using HotelProject.DataAccessLayer.Configuration;
+using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using System.Reflection.Emit;
+
 
 namespace HotelProject.DataAccessLayer.Concrete
 {
@@ -27,6 +26,11 @@ namespace HotelProject.DataAccessLayer.Concrete
             {
                 entry.ToTable("Staffs", tb => tb.HasTrigger("Staffincrease"));
             });
+
+            builder.ApplyConfiguration(new AppUserConfiguration());
+            builder.ApplyConfiguration(new WorkLocationConfiguration());
+            builder.ApplyConfiguration(new ContactConfiguration());
+            builder.ApplyConfiguration(new MessageCategoryConfiguration());
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,5 +47,7 @@ namespace HotelProject.DataAccessLayer.Concrete
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<SendMessage> SendMessages { get; set; }
         public DbSet<MessageCategory> MessageCategories { get; set; }
+        public DbSet<WorkLocation> WorkLocations { get; set; }
+
     }
 }
