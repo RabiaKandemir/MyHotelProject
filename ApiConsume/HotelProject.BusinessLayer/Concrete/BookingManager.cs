@@ -28,6 +28,11 @@ namespace HotelProject.BusinessLayer.Concrete
             _bookingDal.Delete(entity);
         }
 
+        public int TGetBookingCount()
+        {
+            return _bookingDal.GetBookingCount();
+        }
+
         public Booking TGetById(int id)
         {
             return _bookingDal.GetById(id);
@@ -41,6 +46,11 @@ namespace HotelProject.BusinessLayer.Concrete
         public void TInsert(Booking entity)
         {
             _bookingDal.Insert(entity);
+        }
+
+        public List<Booking> TLast6Bookings()
+        {
+          return  _bookingDal.Last6Bookings();
         }
 
         public void TUpdate(Booking entity)

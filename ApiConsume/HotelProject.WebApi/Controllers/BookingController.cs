@@ -21,6 +21,12 @@ namespace HotelProject.WebApi.Controllers
             var values = _bookingService.TGetList();
             return Ok(values);
         }
+        [HttpGet("Last6Booking")]
+        public IActionResult Last6Booking()
+        {
+            var values = _bookingService.TLast6Bookings();
+            return Ok(values);
+        }
         [HttpPost]
         public IActionResult AddBooking(Booking Booking)
         {
